@@ -10,6 +10,7 @@ Usage:
 library(XalBio)
 
 sequence <- 'AGCTN'
+
 base <- 'G'
 
 one_hot <- encode_base(base)
