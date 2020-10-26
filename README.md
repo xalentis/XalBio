@@ -6,6 +6,7 @@ Installation:
 devtools::install_github("https://github.com/xalentis/XalBio")
 
 Usage:
+
 library(XalBio)
 
 sequence <- 'AGCTN'
