@@ -17,13 +17,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // encode_sequence
-NumericVector encode_sequence(CharacterVector sequence);
-RcppExport SEXP _XalBio_encode_sequence(SEXP sequenceSEXP) {
+NumericVector encode_sequence(CharacterVector sequence, CharacterVector reverse, int gap);
+RcppExport SEXP _XalBio_encode_sequence(SEXP sequenceSEXP, SEXP reverseSEXP, SEXP gapSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< CharacterVector >::type sequence(sequenceSEXP);
-    rcpp_result_gen = Rcpp::wrap(encode_sequence(sequence));
+    Rcpp::traits::input_parameter< CharacterVector >::type reverse(reverseSEXP);
+    Rcpp::traits::input_parameter< int >::type gap(gapSEXP);
+    rcpp_result_gen = Rcpp::wrap(encode_sequence(sequence, reverse, gap));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -41,7 +43,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_XalBio_encode_base", (DL_FUNC) &_XalBio_encode_base, 1},
-    {"_XalBio_encode_sequence", (DL_FUNC) &_XalBio_encode_sequence, 1},
+    {"_XalBio_encode_sequence", (DL_FUNC) &_XalBio_encode_sequence, 3},
     {"_XalBio_reverse_compliment", (DL_FUNC) &_XalBio_reverse_compliment, 1},
     {NULL, NULL, 0}
 };

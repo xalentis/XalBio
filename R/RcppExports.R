@@ -13,8 +13,8 @@ encode_base <- function(base) {
 #'
 #' @param DNA sequence of A,T,C,G or N bases
 #' @return A one-hot encoded vector
-encode_sequence <- function(sequence) {
-    .Call(`_XalBio_encode_sequence`, sequence)
+encode_sequence <- function(sequence, reverse, gap) {
+    .Call(`_XalBio_encode_sequence`, sequence, reverse, gap)
 }
 
 #' Generates reverse-compliment of DNA sequence

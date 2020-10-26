@@ -34,10 +34,10 @@ NumericVector encode_base(char base) {
 //' @param DNA sequence of A,T,C,G or N bases
 //' @return A one-hot encoded vector
 // [[Rcpp::export]]
-NumericVector encode_sequence(CharacterVector sequence) {
+NumericVector encode_sequence(CharacterVector sequence, CharacterVector reverse, int gap) {
   
   int num_bases = sequence[0].size();
-  NumericVector result (4 * num_bases);
+  NumericVector result (4 * ((num_bases * 2) + gap));
   
   int j=0;
   for( int i=0; i < num_bases; i++ ) {
@@ -48,7 +48,24 @@ NumericVector encode_sequence(CharacterVector sequence) {
     result[j+15] = temp[3];
     j++;
   }
-  result.attr("dim") = Dimension(num_bases,4);
+  j+=4;
+  for( int i=0; i <= gap; i++ ) {
+    result[j] = 0;
+    result[j+5] = 0;
+    result[j+10] = 0;
+    result[j+15] = 0;
+    j++;
+  }
+  j+=4;
+  for( int i=0; i < num_bases; i++ ) {
+    NumericVector temp = encode_base(reverse[0][i]);
+    result[j] = temp[0];
+    result[j+5] = temp[1];
+    result[j+10] = temp[2];
+    result[j+15] = temp[3];
+    j++;
+  }
+  result.attr("dim") = Dimension(num_bases*2+gap,4);
   
   return result;
 }
