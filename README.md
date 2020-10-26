@@ -15,5 +15,6 @@ one_hot <- encode_base(base)
 
 reversed <- reverse_compliment(sequence)
 
-# encode sequence and reverse compliment, with a gap of 48 N bases in-between
+Encode sequence and reverse compliment, with a gap of 48 N bases in-between:
+
 one_hot <- encode_sequence(sequence, reversed, 48)
