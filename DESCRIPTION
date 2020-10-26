@@ -1,0 +1,14 @@
+Package: XalBio
+Type: Package
+Title: DNA Sequence Encoding
+Version: 1.0
+Date: 2020-10-25
+Author: Xalentis Pty Ltd
+Maintainer: Gideon Vos <info@xalentis.com>
+Description: DNA sequence encoding routines.
+License: GPL (>= 2)
+Imports: 
+    Rcpp
+LinkingTo: Rcpp
+RoxygenNote: 6.1.1
+Encoding: UTF-8
